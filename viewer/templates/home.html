@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Filter</h2>
+
+<nav>
+            <a href="?rating=2"> Movies rated greater than 2</a>
+</nav>
+
+<h2>Genre</h2>
+
+<nav>
+    {% for gen in genres %}
+        {% if gen.slug %}
+            <a href="{% url 'genre' gen.slug %}">{{ gen.name }}</a>
+        {% endif %}
+    {% endfor %}
+</nav>
+
+<h3>Liked movies</h3>
+
+<ul>
+    {% for film in filme %}
+        <li><a href="{% url 'film' film.slug %}">{{ film.title }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
